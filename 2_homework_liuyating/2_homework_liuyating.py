@@ -25,35 +25,8 @@ def parse_filename(filepath):
     label = label.split('_')[-1]
     return name, light_level, position, label
 
-# def parse_filename(filepath):
-#     for file in get_file_list(filepath):
-#         person,position,light,label = file.split('/')[-4:]
-#         print(person,position,light,label)
-#         for path in get_file_list(filepath, types=['.csv']):
-#             if label != 'drinking(eating,calling).csv':
-#                 with open(path) as file:
-#                     data = pd.read_csv(file)
-#                     print(data.iloc[:,[0,1]])
-# parse_filename(filepath)
 
-def filter_file_list(file_list, lights = [], positions=[], names=[], labels=[]):
-    return list(filter(lambda x: filter_by_attributes(x, lights, positions, names, labels), file_list))
 
-def filter_by_attributes(filename, lights = [], positions=[], names=[], labels=[]):
-    name, light_level, position, label = parse_filename(filename)
-    if lights:
-        if light_level not in lights:
-            return False
-    if positions:
-        if position not in positions:
-            return False
-    if names:
-        if name not in names:
-            return False
-    if labels:
-        if label not in labels:
-            return False
-    return True
 
 def calculate(data):
     starTime = int(data[0])
@@ -81,4 +54,5 @@ def calculate(data):
 
 
 
-# if __name__ == "__main__":
+if __name__ == '__main__':
+    main()
